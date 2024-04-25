@@ -32,7 +32,10 @@ app.use(session({
 const mainRouter = require('./controls/main')
 const pokemonRouter = require('./controls/pokemonController')
 
+const loginRouter = require('./controls/login');
+
 app.use("/", mainRouter)
+app.use("/login", loginRouter)
 app.use("/pokemon", pokemonRouter);
 
 app.listen(process.env.PORT, () => {
