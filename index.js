@@ -31,7 +31,10 @@ app.use(session({
 //Rotas
 const mainRouter = require('./controls/main')
 
+const loginRouter = require('./controls/login');
+
 app.use("/", mainRouter)
+app.use("/", loginRouter)
 
 app.listen(process.env.PORT, () => {
     console.log("Running...")
