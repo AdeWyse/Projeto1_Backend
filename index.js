@@ -8,6 +8,7 @@ const app = express()
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.urlencoded({ extended: true }));
 
 //Template
 var mustacheExpress = require("mustache-express");
@@ -30,8 +31,10 @@ app.use(session({
 
 //Rotas
 const mainRouter = require('./controls/main')
+const pokemonRouter = require('./controls/pokemonController')
 
 app.use("/", mainRouter)
+app.use("/criar", pokemonRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("Running...")
