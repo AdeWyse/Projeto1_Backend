@@ -10,6 +10,7 @@ var router = express.Router();
 
 router.use(express.urlencoded({ extended: true }));
 
+//Para acessar pokemon/new
 router.get("/new", (req, res) => {
   //Seta elementos do template para a página criar
     criarPage = {
@@ -40,6 +41,7 @@ router.post("/new", (req, res) => {
     res.redirect("/");
     return
   }else{
+    //Seta elementos do template para a página criar, preenche campos e mostra o erro ao usuario
     const criarPage = {
       botaoTexto: "Adicionar",
       acao: "pokemon/new",
@@ -54,11 +56,14 @@ router.post("/new", (req, res) => {
 });
 //para acessar /pokemon/update/?nome=
 router.get("/update", (req, res) => {
+    //Carrega dados do pokemoon para preencher campos do formulario
     const dados = Pokemon.getPokemonByName(req.query.nome)
+    //Se nao existir redireciona para a pagina de criar
     if(dados == null){
-      res.redirect("/new")
+      res.redirect("/pokemon/new")
       return
     }
+    //Seta elementos do template para a página criar, preenche campos e mostra o erro ao usuario
     editarPage = {
       botaoTexto: "Editar",
       dados: dados,
@@ -73,6 +78,7 @@ router.get("/update", (req, res) => {
 router.post("/update", (req, res) => {
   const { error, value } = PaginaSchema.validate(req.body);
   if (error) {
+    //Seta elementos do template para a página editar, preenche campos e mostra o erro ao usuario
     const editarPage = {
       botaoTexto: "Editar",
       dados: req.body,
@@ -89,6 +95,7 @@ router.post("/update", (req, res) => {
     res.redirect("/");
     return
   }else{
+    //Seta elementos do template para a página editar, preenche campos e mostra o erro ao usuario
     const editarPage = {
       botaoTexto: "Editar",
       acao: "update",
