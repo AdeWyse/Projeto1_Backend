@@ -1,0 +1,1 @@
+{"numero":"2002","nome":"Charmander","geracao":"Gen I","tipo":"Normal","cidade":"werwerwr","imagem":"wpp.webp","originalImagem":"wpp.webp","descricao":"f sd afas s fas as "}

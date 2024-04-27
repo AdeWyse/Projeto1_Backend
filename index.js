@@ -6,9 +6,8 @@ require("dotenv").config()
 const express = require('express')
 const app = express()
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')))
 
 //Template
 var mustacheExpress = require("mustache-express");
@@ -34,7 +33,7 @@ const mainRouter = require('./controls/main')
 const pokemonRouter = require('./controls/pokemonController')
 
 app.use("/", mainRouter)
-app.use("/criar", pokemonRouter);
+app.use("/pokemon", pokemonRouter);
 
 app.listen(process.env.PORT, () => {
     console.log("Running...")

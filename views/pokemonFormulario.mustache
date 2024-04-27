@@ -5,56 +5,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/pokemonFormulario.css">
-    <title>Novo Pokémon</title>
+    <link rel="stylesheet" href={{css}}>
+    <title>{{^isEditar}}Novo Pokémon{{/isEditar}} {{#isEditar}}{{dados.nome}}{{/isEditar}}</title>
 </head>
 <body>
   <div class="container">
     <h1 class="titulo">Dexplorer</h1>
-    <form action="/criar" class="formulario" method="post" >
+    <form action="/{{acao}}" class="formulario" method="post" >
         <div class="c1">
             <label for="numero">Número:</label>
             <input type="text" class="inputField" id="numero" name="numero" value="{{dados.numero}}" required>
         </div>
         <div class="c2">
             <label for="nome">Nome:</label>
-            <input type="text" class="inputField" id="nome" name="nome" value="{{dados.nome}}" required>
+            <input type="text" class="inputField" id="nome" name="nome" value="{{dados.nome}}"  {{#isEditar}}readonly {{/isEditar}}required>
         </div>
         <div class="c3">
             <label for="geracao">Geração:</label>
-            <select id="geracao" name="geracao" class="inputField" value="{{dados.geracao}}" required>
-              <option value="Gen I">Gen I</option>
-              <option value="Gen II">Gen II</option>
-              <option value="Gen III">Gen III</option>
-              <option value="Gen IV">Gen IV</option>
-              <option value="Gen V">Gen V</option>
-              <option value="Gen VI">Gen VI</option>
-              <option value="Gen VII">Gen VII</option>
-              <option value="Gen VIII">Gen VIII</option>
-            </select>
+             <input type="text" class="inputField" id="geracao" name="geracao" value="{{dados.geracao}}" required>
         </div>
         <div class="c1">
             <label for="tipo">Tipo:</label>
-           <select id="tipo" name="tipo" class="inputField" value="{{dados.tipo}}" required>
-              <option value="Normal">Normal</option>
-              <option value="Fogo">Fogo</option>
-              <option value="Água">Água</option>
-              <option value="Grama">Grama</option>
-              <option value="Elétrico">Elétrico</option>
-              <option value="Gelo">Gelo</option>
-              <option value="Lutador">Lutador</option>
-              <option value="Venenoso">Venenoso</option>
-              <option value="Terra">Terra</option>
-              <option value="Voador">Voador</option>
-              <option value="Psíquico">Psíquico</option>
-              <option value="Inseto">Inseto</option>
-              <option value="Pedra">Pedra</option>
-              <option value="Fantasma">Fantasma</option>
-              <option value="Dragão">Dragão</option>
-              <option value="Noturno">Noturno</option>
-              <option value="Metálico">Metálico</option>
-              <option value="Fada">Fada</option>
-          </select>
+           <input type="text" class="inputField" id="tipo" name="tipo" value="{{dados.tipo}}" required>
         </div>
         <div class="c2">
             <label for="cidade">Cidade:</label>
@@ -62,7 +34,10 @@
         </div>
         <div class="c3">
             <label for="imagem">Imagem:</label>
-            <input type="file" id="imagem" class="inputField" name="imagem" accept="image/*" required>
+            <input type="file" id="imagem" class="inputField" name="imagem" accept="image/*" {{^dados.imagem}}required{{/dados.imagem}}>
+                {{#dados.imagem}}
+                  <input type="hidden" name="originalImagem" value="{{dados.imagem}}">
+                {{/dados.imagem}}
         </div>
          <div class="c4">
             <label for="descricao">Descrição:</label>
