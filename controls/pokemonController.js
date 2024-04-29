@@ -109,5 +109,25 @@ router.post("/update", (req, res) => {
   }
   
 });
+//==================================Jaco pagina individual=======================================
+//para acessar /pokemon/{id do pokemon}
+router.get("/:nome", (req, res) => {
+  const nome = req.params.nome;
+  var erro = "";
+  var pokemon = Pokemon.getPokemonByName(nome);
+  
+  if(pokemon == null){
+    erro= "Não foi possível encontrar este Pokémon!"
+  }
+  const criarPage = {
+    pokemon: pokemon,
+    css: "../css/pokemon.css",
+    erro: erro
+  };
+    
+  res.render("pokemon", criarPage);
+});
+
+
 
 module.exports = router

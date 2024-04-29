@@ -1,1 +1,7 @@
-{"numero":"185","nome":"Pikachu","geracao":"Gen VI","tipo":"Venenoso","cidade":"Cornélio Procópio","imagem":"wpp.webp","descricao":"sad as dasasd asd asd"}
+{"numero":"185",
+"nome":"Pikachu",
+"geracao":"Gen VI",
+"tipo":"ÁGUA",
+"cidade":"KANTO",
+"imagem":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQLfCd0SJ8XfEd6I8an7j4VM9leNRv-X3GGwXxIBS0Pw&s",
+"descricao":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
