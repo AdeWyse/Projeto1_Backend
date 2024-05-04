@@ -3,6 +3,7 @@ var express = require('express');
 var PaginaSchema = require("../validators/pokemonValidator")
 const Joi = require("joi")
 const Pokemon = require("../models/Pokemon")
+const imgHandler = require("../helpers/imageUploadHandler")
 
 
 
@@ -22,8 +23,15 @@ router.get("/new", (req, res) => {
   res.render("pokemonFormulario", criarPage);
 });
 
-router.post("/new", (req, res) => {
-  const { error, value } = PaginaSchema.validate(req.body);
+router.post("/new", imgHandler.upload.single("imagem"), (req, res) => {
+  var error = null;
+  //Checa se imagem foi enviada
+  if (!req.file) {
+    req.body.imagem = null;
+  }else{
+    req.body.imagem = req.file.originalname;
+    var { error, value } = PaginaSchema.validate(req.body);
+  }
   if (error) {
     //Seta elementos do template para a página criar, preenche campos e mostra o erro ao usuario
     const criarPage = {
@@ -36,6 +44,7 @@ router.post("/new", (req, res) => {
     res.render("pokemonFormulario", criarPage);
     return;
   }
+  
   const result = Pokemon.process(req.body)
   if(result == true){
     res.redirect("/");
@@ -75,8 +84,15 @@ router.get("/update", (req, res) => {
   res.render("pokemonFormulario", editarPage);
 });
 
-router.post("/update", (req, res) => {
-  const { error, value } = PaginaSchema.validate(req.body);
+router.post("/update",imgHandler.upload.single("imagem"), (req, res) => {
+  var error = null;
+  //Chega se imagem foi alterada
+  if (!req.file) {
+    req.body.imagem = null;
+  }else{
+    req.body.imagem = req.file.originalname;
+    var { error, value } = PaginaSchema.validate(req.body);
+  }
   if (error) {
     //Seta elementos do template para a página editar, preenche campos e mostra o erro ao usuario
     const editarPage = {
@@ -90,6 +106,8 @@ router.post("/update", (req, res) => {
     res.render("pokemonFormulario", editarPage);
     return;
   }
+
+  
   const result = Pokemon.process(req.body)
   if(result == true){
     res.redirect("/");

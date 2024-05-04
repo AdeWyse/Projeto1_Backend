@@ -18,11 +18,7 @@ const PaginaSchema = Joi.object({
         .max(30)
         .required(),
     originalImagem: Joi.string(),
-    imagem: Joi.when('originalImagem', {
-        is: Joi.exist(),
-        then: Joi.optional(),
-        otherwise: Joi.string().required()
-    }),
+    imagem : Joi.string(),
     descricao: Joi.string()
         .required()
 });

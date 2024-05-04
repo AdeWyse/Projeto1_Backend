@@ -26,7 +26,7 @@ module.exports = {
     update(pokemon) {
         try {
             const nome = pokemon.nome;
-            if(pokemon.imagem == ""){
+            if(pokemon.imagem == "" || pokemon.imagem == null){
                 pokemon.imagem = pokemon.originalImagem
                 delete pokemon.originalImagem;
             };

@@ -1,1 +1,1 @@
-{"numero":"185","nome":"Pikachu","geracao":"Gen VI","tipo":"Venenoso","cidade":"Cornélio Procópio","imagem":"wpp.webp","descricao":"sad as dasasd asd asd"}
+{"numero":"185","nome":"Pikachu","geracao":"Gen VI","tipo":"Venenoso","cidade":"Cornélio Procópio","imagem":"pokemon.png","descricao":"sad as dasasd asd asd"}
