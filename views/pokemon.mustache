@@ -45,8 +45,8 @@
           <p>{{pokemon.descricao}}</p>
         </div>
         <div class="d-flex justify-content-end">
-          <button class="custom-btn btn-editar ">Editar</button>
-          <button class="custom-btn btn-apagar">Apagar</button>
+          <button class="custom-btn btn-editar "><a href="/pokemon/update/?nome={{pokemon.nome}}">Editar</a></button>
+          <button class="custom-btn btn-apagar"><a href="/pokemon/delete/?nome={{pokemon.nome}}">Apagar</a></button>
         </div>
       </div>
     </div>

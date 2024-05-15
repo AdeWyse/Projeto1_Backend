@@ -1,5 +1,5 @@
 const path = require('path');
-const { existsSync, readFileSync, writeFileSync } = require('fs');
+const { existsSync, readFileSync, writeFileSync,unlinkSync } = require('fs');
 
 const pokemonPath = path.join(__dirname, "../pokemons");
 
@@ -49,5 +49,17 @@ module.exports = {
         }
     },
     delete(name) {
+        try {
+            const pokemonFile = path.join(pokemonPath, `${name}.txt`);
+            if (existsSync(pokemonFile)) {
+                unlinkSync(pokemonFile); // Adicionando o módulo fs corretamente
+                return true;
+            } else {
+                return "O arquivo do Pokémon não existe.";
+            }
+        } catch (error) {
+            return "Erro ao excluir o arquivo do Pokémon: " + error;
+        }
+
     }
 };

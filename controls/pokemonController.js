@@ -92,7 +92,7 @@ router.post("/update", (req, res) => {
   }
   const result = Pokemon.process(req.body)
   if(result == true){
-    res.redirect("/");
+    res.redirect("/pokemon/?nome="+req.query.nome);
     return
   }else{
     //Seta elementos do template para a página editar, preenche campos e mostra o erro ao usuario
@@ -110,9 +110,9 @@ router.post("/update", (req, res) => {
   
 });
 //==================================Jaco pagina individual=======================================
-//para acessar /pokemon/{id do pokemon}
-router.get("/:nome", (req, res) => {
-  const nome = req.params.nome;
+//para acessar /pokemon/{nome do pokemon}
+router.get("/", (req, res) => {
+  const nome = req.query.nome;
   var erro = "";
   var pokemon = Pokemon.getPokemonByName(nome);
   
@@ -126,6 +126,64 @@ router.get("/:nome", (req, res) => {
   };
     
   res.render("pokemon", criarPage);
+});
+
+//===============================jaco deletar=====================================================
+//para acessar /pokemon/delete/?nome=
+router.get("/delete", (req, res) => {
+  //Carrega dados do pokemoon para preencher campos do formulario
+  const dados = Pokemon.getPokemonByName(req.query.nome)
+  //Se nao existir redireciona para a pagina de criar
+  if(dados == null){
+    res.redirect("/")
+    return
+  }
+  //Seta elementos do template para a página criar, preenche campos e mostra o erro ao usuario
+  apagarPage = {
+    botaoTexto: "Apagar",
+    dados: dados,
+    acao: "pokemon/delete/?nome=" + req.query.nome,
+    css: "../../css/pokemonFormulario.css",
+    isEditar: false,
+  };
+  
+res.render("pokemonFormulario", apagarPage);
+});
+
+
+router.post("/delete", (req, res) => {
+  const { error, value } = PaginaSchema.validate(req.body);
+  if (error) {
+    //Seta elementos do template para a página editar, preenche campos e mostra o erro ao usuario
+    const apagarPage = {
+      botaoTexto: "Apagar",
+      dados: req.body,
+      acao: "pokemon/delete/?nome=" + req.query.nome,
+      css: "../../css/pokemonFormulario.css",
+      isEditar: false,
+      erro: error
+    };
+    res.render("pokemonFormulario", apagarPage);
+    return;
+  }
+  const result = Pokemon.delete(req.body.nome)
+  if(result == true){
+    res.redirect("/");
+    return
+  }else{
+    //Seta elementos do template para a página editar, preenche campos e mostra o erro ao usuario
+    const apagarPage = {
+      botaoTexto: "Apagar",
+      acao: "pokemon/delete/?nome=" + req.query.nome,
+      dados: req.body,
+      css: "../../css/pokemonFormulario.css",
+      isEditar: false,
+      erro: result
+    };
+    res.render("pokemonFormulario", apagarPage);
+    return;
+  }
+  
 });
 
 

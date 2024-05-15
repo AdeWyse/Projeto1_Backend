@@ -72,6 +72,7 @@ body {
     min-height: 60vh;
     color: #000000;
     font-family: 'Poppins', sans-serif;
+    word-break: break-all;
   }
 
   .custom-btn{
@@ -98,4 +99,9 @@ body {
   .btn-apagar{
     background-color: #DC3131;
     color: #FFFFFF;
+  }
+  
+  a{
+    text-decoration: none;
+    color:#000000;
   }
