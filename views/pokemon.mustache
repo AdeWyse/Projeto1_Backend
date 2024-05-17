@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href={{css}}>
+    <title>{{pokemon.nome}}</title>
+</head>
+<body>
+{{^erro}}
+  <div class="container">
+    <!-- Título da página -->
+    <h1 class="text-center mt-2 titulo">Dexplorer</h1>
+
+    <div class="row mt-5">
+      <!-- Card -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="../imgs/{{pokemon.imagem}}" class="card-img-top img-fluid mx-auto d-block card-image" alt="..." style="">
+          <div class="card-body">
+            <div class="d-flex flex-column mb-2">
+              <p class="card-numero-nome card-numero">#{{pokemon.numero}}</p>
+              <p class="card-numero-nome card-nome">{{pokemon.nome}}</p>
+            </div>
+            <div class="d-flex d-flex justify-content-start">
+              <p class="card-especificacoes">{{pokemon.geracao}}</p>
+              <p class="card-especificacoes">{{pokemon.tipo}}</p>
+              <p class="card-especificacoes">{{pokemon.cidade}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Descrição -->
+      <div class="col-md-8 d-flex flex-column">
+        <div class="descricao">
+          <h2>{{pokemon.nome}}</h2>
+          <p>{{pokemon.descricao}}</p>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="custom-btn btn-editar "><a href="/pokemon/update/?nome={{pokemon.nome}}">Editar</a></button>
+          <button class="custom-btn btn-apagar"><a href="/pokemon/delete/?nome={{pokemon.nome}}">Apagar</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/erro}}
+<!--caso o pokemon  nao encontrado-->
+{{#erro}}
+  <div class="erro">
+    {{erro}}
+  </div>
+{{/erro}}
+  </div>
+</body>
+</html>

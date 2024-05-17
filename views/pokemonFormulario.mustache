@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href={{css}}>
+    <title>{{^isEditar}}Novo Pokémon{{/isEditar}} {{#isEditar}}{{dados.nome}}{{/isEditar}}</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Dexplorer</h1>
+    <form action="/{{acao}}" class="formulario" method="post" enctype="multipart/form-data">
+        <div class="c1">
+            <label for="numero">Número:</label>
+            <input type="text" class="inputField" id="numero" name="numero" value="{{dados.numero}}" required>
+        </div>
+        <div class="c2">
+            <label for="nome">Nome:</label>
+            <input type="text" class="inputField" id="nome" name="nome" value="{{dados.nome}}"  {{#isEditar}}readonly {{/isEditar}}required>
+        </div>
+        <div class="c3">
+            <label for="geracao">Geração:</label>
+             <input type="text" class="inputField" id="geracao" name="geracao" value="{{dados.geracao}}" required>
+        </div>
+        <div class="c1">
+            <label for="tipo">Tipo:</label>
+           <input type="text" class="inputField" id="tipo" name="tipo" value="{{dados.tipo}}" required>
+        </div>
+        <div class="c2">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" class="inputField" name="cidade" value="{{dados.cidade}}" required>
+        </div>
+        <div class="c3">
+            <label for="imagem">Imagem:</label>
+            <input type="file" id="imagem" class="inputField" name="imagem" accept="image/*" {{^dados.imagem}}required{{/dados.imagem}}>
+                {{#dados.imagem}}
+                  <input type="hidden" name="originalImagem" value="{{dados.imagem}}">
+                {{/dados.imagem}}
+        </div>
+         <div class="c4">
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4" cols="50" class="inputField" required>{{dados.descricao}}</textarea>
+        </div>
+        <button type="submit" class="c4">{{botaoTexto}}</button>
+    </form>
+    {{#erro}}
+      <div class="erro">
+        {{erro}}
+      </div>
+    {{/erro}}
+  </div>
+</body>
+</html>
