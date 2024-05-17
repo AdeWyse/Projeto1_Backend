@@ -51,6 +51,7 @@ module.exports = {
     delete(name) {
         try {
             const pokemonFile = path.join(pokemonPath, `${name}.txt`);
+            console.log(pokemonFile)
             if (existsSync(pokemonFile)) {
                 unlinkSync(pokemonFile); // Adicionando o módulo fs corretamente
                 return true;
