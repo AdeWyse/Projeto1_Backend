@@ -128,7 +128,7 @@ router.post("/update",imgHandler.upload.single("imagem"), (req, res) => {
   
 });
 //==================================Jaco pagina individual=======================================
-//para acessar /pokemon/{nome do pokemon}
+//para acessar /pokemon/?nome=
 router.get("/", (req, res) => {
   const nome = req.query.nome;
   var erro = "";
