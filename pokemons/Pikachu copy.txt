@@ -1,0 +1,1 @@
+{"numero":"200","nome":"Pikachu","geracao":"Gen VI","tipo":"Eletrico","cidade":"KANTO","descricao":"sad as dasasd asd asd","imagem":"pokemon.png"}

@@ -1,5 +1,5 @@
 const path = require('path');
-const { existsSync, readFileSync, writeFileSync,unlinkSync } = require('fs');
+const { existsSync, readFileSync, writeFileSync, unlinkSync, readdirSync} = require('fs');
 
 const pokemonPath = path.join(__dirname, "../pokemons");
 
@@ -37,7 +37,18 @@ module.exports = {
             return "Error editando esse pokemon: ", error;
         }
     },
-    list() {
+    list(){
+        const pokemonFiles = readdirSync(pokemonPath); // Read all files in the folder
+    
+        const pokemonList = pokemonFiles
+            .filter(file => file.endsWith('.txt')) // Filter out non-txt files
+            .map(file => {
+                const filePath = path.join(pokemonPath, file); // Get full path of the file
+                const content = readFileSync(filePath, 'utf8'); // Read file content
+                return JSON.parse(content); // Parse content as JSON and return
+            });
+    
+        return pokemonList.length > 0 ? pokemonList : null;
     },
     getPokemonByName(name) {
         const pokemonFile = path.join(pokemonPath, `${name}.txt`);

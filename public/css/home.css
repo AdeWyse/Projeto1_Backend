@@ -4,23 +4,45 @@ body {
     padding:0;
     background-color: #8BC5CD;
     color: #FFE69C;
-  
+    max-width: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 
 .header{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .titulo{
-  text-align: left;
-  font-size: 60px;
-  padding-bottom: 5px;
-  text-shadow: 2px 2px 4px  rgba(0, 0, 0, 0.5);
-  color: #FFE69C;
-  font-family: 'Poppins', sans-serif;
+    text-align: left;
+    font-size: 60px;
+    padding-bottom: 5px;
+    text-shadow: 2px 2px 4px  rgba(0, 0, 0, 0.5);
+    
 }
+
+.buttonNovo {
+    width: 10%;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000000;
+    background-color: #FFE69C;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    
+}
+
+.buttonNovo:hover {
+    background-color: #0056b3;
+    color: #000000;
+}
+
 
 .erro{
     color: rgb(252, 72, 72);
@@ -30,13 +52,24 @@ body {
     padding-bottom: 5px;  
 }
 
+.pokemonList{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1em;
+}
 
 .card {
     display: flex;
     flex-direction: column;
-    width: 300px; /* Largura do card */
-    margin-right: auto; /* Alinhar à esquerda */
-    margin-bottom: 20px;
+    width: 250px; /* Largura do card */
+    margin: 20px;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    background-color: #f4e9c8;
   }
 
   .card-body {
@@ -44,7 +77,8 @@ body {
     flex-direction: column;
   }
   .card-image{
-    max-width: 80%; 
+    width: 80%; 
+    height: 200px;
     margin-top: 20px;
     
   }
@@ -68,10 +102,10 @@ body {
     background-color: #8BC5CD;
     border-radius: 5px;
     padding: 5px;
-    font-size: x-large;
+    font-size: large;
     font-family: 'Bebas Neue', sans-serif;
     color: #FFFFFF;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   .descricao {

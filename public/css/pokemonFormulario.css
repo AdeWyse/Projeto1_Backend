@@ -8,11 +8,15 @@ body {
     color: #5A9CA4;
 }
 
-.titulo{
-    text-align: center;
-    font-size: 75px;
-    padding: 25px;
-    padding-bottom: 5px;
+a {
+    text-align: left;
+    font-size: 60px;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px  rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    padding-bottom: 3em;
+    color: #5A9CA4;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 .formulario {
@@ -21,6 +25,7 @@ body {
     grid-template-rows: 3;
     gap: 10px;
     margin: 0 auto;
+    margin-top: 50px;
 }
 
 .c1{
@@ -76,3 +81,4 @@ button:hover {
     color: rgb(252, 72, 72);
     padding-top: 2em;
 }
+

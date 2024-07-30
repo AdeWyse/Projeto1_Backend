@@ -1,1 +1,1 @@
-{"numero":"2002","nome":"Charmander","geracao":"Gen I","tipo":"Normal","cidade":"werwerwr","descricao":"f sd afas s fas as ","imagem":"pokemon.png"}
+{"numero":"2002","nome":"Charmander1","geracao":"Gen I","tipo":"Normal","cidade":"werwerwr","descricao":"f sd afas s fas as ","imagem":"pokemon.png"}
