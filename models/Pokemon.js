@@ -38,14 +38,14 @@ module.exports = {
         }
     },
     list(){
-        const pokemonFiles = readdirSync(pokemonPath); // Read all files in the folder
+        const pokemonFiles = readdirSync(pokemonPath); // Pegar files da pasta
     
         const pokemonList = pokemonFiles
-            .filter(file => file.endsWith('.txt')) // Filter out non-txt files
+            .filter(file => file.endsWith('.txt')) // Filtrar por .txt
             .map(file => {
-                const filePath = path.join(pokemonPath, file); // Get full path of the file
-                const content = readFileSync(filePath, 'utf8'); // Read file content
-                return JSON.parse(content); // Parse content as JSON and return
+                const filePath = path.join(pokemonPath, file); 
+                const content = readFileSync(filePath, 'utf8'); 
+                return JSON.parse(content); 
             });
     
         return pokemonList.length > 0 ? pokemonList : null;

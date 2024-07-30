@@ -4,9 +4,9 @@ const Pokemon = require("../models/Pokemon")
 
 router.get("/", (req, res) => {
     let error = ""
-      //Seta elementos do template para a página criar
+      //Pegar lista de pokemons
       var pokemons = Pokemon.list();
-
+    //Seta elementos do template para a home
       renderPage = {
         pokemonList: pokemons,
         css: "../css/home.css",
