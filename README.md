@@ -43,59 +43,59 @@ Acesse o aplicativo no navegador, substituindo PORT pela porta descrita no `.env
 
 ##### a. Criação de Pokémon
 **`GET /pokemon/new`**
-Descrição: Renderiza o formulário para criar um novo Pokémon.
+Renderiza o formulário para criar um novo Pokémon.
 Middleware: checkUser (verifica se o usuário está autenticado).
 
 **`POST /pokemon/new`**
-Descrição: Recebe os dados do formulário e cria um novo Pokémon. Se a validação falhar, renderiza o formulário novamente com erros.
+Recebe os dados do formulário e cria um novo Pokémon. Se a validação falhar, renderiza o formulário novamente com erros.
 Middleware: checkUser (verifica se o usuário está autenticado), imgHandler.upload.single("imagem") (processa o upload da imagem).
 
 
 ##### b. Edição de Pokémon
 **`GET /pokemon/update`**
-Descrição: Renderiza o formulário para editar um Pokémon existente, carregando dados do Pokémon para preencher o formulário.
+Renderiza o formulário para editar um Pokémon existente, carregando dados do Pokémon para preencher o formulário.
 Middleware: checkAdmin (verifica se o usuário é um administrador).
 
 **`POST /pokemon/update`**
-Descrição: Recebe os dados do formulário para atualizar um Pokémon existente. Se a validação falhar, renderiza o formulário novamente com erros.
+Recebe os dados do formulário para atualizar um Pokémon existente. Se a validação falhar, renderiza o formulário novamente com erros.
 Middleware: checkAdmin (verifica se o usuário é um administrador).
 
 ##### c. Visualização de Pokémon
 **`GET /pokemon`**
-Descrição: Renderiza a página com detalhes de um Pokémon específico.
+Renderiza a página com detalhes de um Pokémon específico.
 
 ##### d. Exclusão de Pokémon
 **`GET /pokemon/delete`**
-Descrição: Exclui um Pokémon e redireciona para a lista de Pokémon. Se o Pokémon não for encontrado, redireciona para a página inicial.
+Exclui um Pokémon e redireciona para a lista de Pokémon. Se o Pokémon não for encontrado, redireciona para a página inicial.
 Middleware: checkAdmin (verifica se o usuário é um administrador).
 
 #### 2. Rotas da Página Inicial
 **`GET /`**
-Descrição: Renderiza a página inicial com a lista de todos os Pokémon.
+Renderiza a página inicial com a lista de todos os Pokémon.
 
 #### 3. Rotas de Autenticação e Registro
 ##### a. Login
 **`GET /login`**
-Descrição: Renderiza o formulário de login.
+Renderiza o formulário de login.
 
 **`POST /login`**
-Descrição: Processa o login do usuário. Se o e-mail e senha estiverem corretos, o usuário é redirecionado para a página inicial. Caso contrário, renderiza o formulário de login com um erro.
+Processa o login do usuário. Se o e-mail e senha estiverem corretos, o usuário é redirecionado para a página inicial. Caso contrário, renderiza o formulário de login com um erro.
 
 ##### b. Logout
 **`GET /logout`**
-Descrição: Faz o logout do usuário, destruindo a sessão e redirecionando para a página inicial.
+Faz o logout do usuário, destruindo a sessão e redirecionando para a página inicial.
 
 ##### c. Registro
 **`GET /register`**
-Descrição: Renderiza o formulário de registro de novos usuários.
+Renderiza o formulário de registro de novos usuários.
 
 **`POST /register`**
-Descrição: Processa o registro de um novo usuário. Se as senhas não corresponderem ou o e-mail já estiver registrado, renderiza o formulário de registro com um erro.
+Processa o registro de um novo usuário. Se as senhas não corresponderem ou o e-mail já estiver registrado, renderiza o formulário de registro com um erro.
 
 ## Permissões
 
-Usuários Comuns: Podem criar novos posts.
-Administradores: Podem editar ou excluir qualquer post.
+- Usuários Comuns: Podem criar novos posts.
+- Administradores: Podem editar ou excluir qualquer post.
 
 ## Tecnologias utilizadas
 - Node.js
