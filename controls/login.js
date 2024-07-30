@@ -3,7 +3,7 @@ const router = express.Router()
 
 const { findByEmail, createUser } = require('../models/User');
 
-
+//Carrega a interface de login
 router.get("/login", (req, res) => {
       const renderPage = {
         css: "../css/login.css",
@@ -11,6 +11,7 @@ router.get("/login", (req, res) => {
     res.render("login", renderPage);
 })
 
+//Realiza o login e seta administradores com a role ADMIN e usuários comuns com a role USER
 router.post("/login", (req, res) => {
     const { email, password } = req.body
 
@@ -42,13 +43,14 @@ router.post("/login", (req, res) => {
     });
 });
 
+//Destrói a sessão do usuário
 router.get('/logout', (req, res) => {
     req.session.destroy();
 
     res.redirect('/');
 })
 
-
+//Carrega a interface de registro
 router.get('/register', (req, res) => {
     const renderPage = {
         css: "../css/login.css",
@@ -56,6 +58,7 @@ router.get('/register', (req, res) => {
     res.render("register", renderPage);
 })
 
+//Registra um usuário
 router.post('/register', (req, res) => {
     const { email, password, confirmPassword } = req.body
 
