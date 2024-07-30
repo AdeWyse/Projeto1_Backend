@@ -5,14 +5,14 @@ const Joi = require("joi")
 const Pokemon = require("../models/Pokemon")
 const imgHandler = require("../helpers/imageUploadHandler")
 
-
+const checkAdmin = require('../middleware/checkAdmin');
 
 var router = express.Router();
 
 router.use(express.urlencoded({ extended: true }));
 
 //Para acessar pokemon/new
-router.get("/new", (req, res) => {
+router.get("/new", checkAdmin, (req, res) => {
   //Seta elementos do template para a página criar
     criarPage = {
       botaoTexto: "Adicionar",
@@ -23,7 +23,7 @@ router.get("/new", (req, res) => {
   res.render("pokemonFormulario", criarPage);
 });
 
-router.post("/new", imgHandler.upload.single("imagem"), (req, res) => {
+router.post("/new", checkAdmin, imgHandler.upload.single("imagem"), (req, res) => {
   var error = null;
   //Checa se imagem foi enviada
   if (!req.file) {
@@ -64,7 +64,7 @@ router.post("/new", imgHandler.upload.single("imagem"), (req, res) => {
   
 });
 //para acessar /pokemon/update/?nome=
-router.get("/update", (req, res) => {
+router.get("/update", checkAdmin, (req, res) => {
     //Carrega dados do pokemoon para preencher campos do formulario
     const dados = Pokemon.getPokemonByName(req.query.nome)
     //Se nao existir redireciona para a pagina de criar
@@ -84,7 +84,7 @@ router.get("/update", (req, res) => {
   res.render("pokemonFormulario", editarPage);
 });
 
-router.post("/update",imgHandler.upload.single("imagem"), (req, res) => {
+router.post("/update", checkAdmin, imgHandler.upload.single("imagem"), (req, res) => {
   var error = null;
   //Chega se imagem foi alterada
   if (!req.file) {
@@ -148,7 +148,7 @@ router.get("/", (req, res) => {
 
 //===============================jaco deletar=====================================================
 //para acessar /pokemon/delete/?nome=
-router.get("/delete", (req, res) => {
+router.get("/delete",  checkAdmin, (req, res) => {
   //Carrega dados do pokemoon para preencher campos do formulario
   const dados = Pokemon.getPokemonByName(req.query.nome)
   //Se nao existir redireciona para a pagina de criar

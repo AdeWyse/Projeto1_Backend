@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #FFE69C;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    
+    flex-direction: column;
+}
+
+.titulo{
+    text-align: left;
+    font-size: 60px;
+    padding-bottom: 5px;
+    text-shadow: 2px 2px 4px  rgba(0, 0, 0, 0.5);
+    color: #5A9CA4;
+    font-family: 'Poppins', sans-serif;
+}
+
+label{
+    font-size: 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: bold;
+
+    color: #5A9CA4;
+}
+
+input[type="email"],
+input[type="password"],
+button[type="submit"]{
+    font-family: "Poppins", sans-serif;
+
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+
+    background-color: transparent;
+
+    border: 2px solid #5A9CA4;
+
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.5));
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus{
+    background-color: transparent;
+
+    border: 2px solid #5A9CA4;
+    outline: none;
+}
+
+button[type="submit"]{
+    width: 100%;
+    color: #5A9CA4;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover{
+    cursor: pointer;
+    background-color: #5A9CA4;
+    color: #FFE69C;
+}
+
+.error{
+    height: 2vh;
+    padding-top: 0.5rem;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+}
