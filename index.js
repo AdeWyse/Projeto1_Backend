@@ -34,6 +34,8 @@ const pokemonRouter = require('./controls/pokemonController')
 
 const loginRouter = require('./controls/login');
 
+const loginRouter = require('./controls/login');
+
 app.use("/", mainRouter)
 app.use("/login", loginRouter)
 app.use("/pokemon", pokemonRouter);
