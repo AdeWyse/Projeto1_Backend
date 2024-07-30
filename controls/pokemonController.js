@@ -6,13 +6,14 @@ const Pokemon = require("../models/Pokemon")
 const imgHandler = require("../helpers/imageUploadHandler")
 
 const checkAdmin = require('../middleware/checkAdmin');
+const checkUser = require('../middleware/checkUser')
 
 var router = express.Router();
 
 router.use(express.urlencoded({ extended: true }));
 
 //Para acessar pokemon/new
-router.get("/new", checkAdmin, (req, res) => {
+router.get("/new", checkUser, (req, res) => {
   //Seta elementos do template para a página criar
     criarPage = {
       botaoTexto: "Adicionar",
@@ -23,7 +24,7 @@ router.get("/new", checkAdmin, (req, res) => {
   res.render("pokemonFormulario", criarPage);
 });
 
-router.post("/new", checkAdmin, imgHandler.upload.single("imagem"), (req, res) => {
+router.post("/new", checkUser, imgHandler.upload.single("imagem"), (req, res) => {
   var error = null;
   //Checa se imagem foi enviada
   if (!req.file) {
