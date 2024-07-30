@@ -1,3 +1,4 @@
+// Verifica se o usuário é um admin
 const checkAdmin = (req, res, next) => {
     if (!(req.session.loggedIn === true && req.session.role === 'ADMIN')) {
         res.render("login", {

@@ -1,3 +1,4 @@
+//Verifica se o usuário está logado
 const checkUser = (req, res, next) => {
     if (!(req.session.loggedIn === true && (req.session.role === 'ADMIN' || req.session.role === 'USER'))) {
         res.render("login", {
